@@ -16,6 +16,13 @@ public class SupplierInterface {
 
     }
 
+    //Returns a value without args
+    public static void  testFunctionInterface(){
+
+        testFunctionInterfacePart2(Stream.generate(()-> new Random().nextInt())
+                .limit(5));
+    }
+
 
     public static void testSupplierError(){
         //this will throw error java.lang.IllegalStateException: stream has already been operated upon or closed
@@ -31,6 +38,7 @@ public class SupplierInterface {
     }
 
     public static void testSupplierOK(){
+        //Supplier only assign the value when you need it
         List<String> list = List.of("Hello", "B2C", "World", "Stack Overflow", "is", "a", "gr8", "platform");
 
         Supplier<Stream<String>> streamSupplier = () -> list.stream()
@@ -43,13 +51,7 @@ public class SupplierInterface {
     }
 
 
-    //Returns a value without args
-    //Supplier only assign the value when you need it
-    public static void  testFunctionInterface(){
 
-        testFunctionInterfacePart2(Stream.generate(()-> new Random().nextInt())
-                .limit(5));
-    }
 
     public static void testFunctionInterfacePart2(Stream<Integer> Integers) {
         Map<Integer, Integer> maps = new HashMap<>();
