@@ -43,12 +43,17 @@ public class ConsumerAndBiConsumer {
     }
 
     static void anThenExample(){
-
+ 
         Consumer<Integer> consumer1 = (value) -> System.out.println(value);
         Consumer<Integer> consumer2 = (value) -> System.out.println(value *= 2);
 
         consumer1.andThen(consumer2).accept(10);
 
+
+        Consumer<Integer> consumer3 = (x) -> System.out.println(x > 10);
+        Consumer<Integer> consumer4 = (y) -> System.out.println(y == 20);
+
+        consumer3.andThen(consumer4).accept(15);
     }
 
 
