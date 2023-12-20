@@ -43,11 +43,14 @@ public class ConsumerAndBiConsumer {
     }
 
     static void anThenExample(){
- 
-        Consumer<Integer> consumer1 = (value) -> System.out.println(value);
+
+        //Works with the value and then work with the second consumer
+        // the first result doesn't interfere with the second consumer
+
+        Consumer<Integer> consumer1 = (value) -> System.out.println(value *= 2);
         Consumer<Integer> consumer2 = (value) -> System.out.println(value *= 2);
 
-        consumer1.andThen(consumer2).accept(10);
+        consumer1.andThen(consumer2).accept(15); // both will print 30
 
 
         Consumer<Integer> consumer3 = (x) -> System.out.println(x > 10);
